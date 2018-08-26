@@ -246,6 +246,47 @@
           "name": "su-modern"
         }
       }
+    },
+    {
+      "name": "su",
+      "namespace": "SU",
+      "format": "1",
+      "version": "1.0.1.27",
+      "compatVersion": "1.0.1",
+      "creator": "skillunion",
+      "summary": "SU Core",
+      "detailedDescription": "Skill Union Core Library",
+      "type": "code",
+      "signatures": [
+        {
+          "name": "skillunion",
+          "uuid": "9da30b13-e739-45ac-9079-2d08301715fa",
+          "created": "2018-08-26T22:42:33Z",
+          "algorithm": "SHA1withRSA",
+          "nonce": "i3XQTPj3Z04\u003d",
+          "signature": "VUD/tvY2yvErgsoLGBa5t+mH4ZFCew/m5Pym8ZnFsqKg74Z1PFT6XSueg6hRPvYJuQ0B1ue1RZMcny5jQ2j1tyCChtC/1N14PgEzeDTgs02LXuwyaxuFnS1uyfs1UPGUrRIhItZEPzBN2e7ujMi6fhmFTlNKA7kT58nH9fjdAAJMwPGNysOW8eM/ZFpYJlpt0ChytY/PCUtA0UBfAOnpUKAig6l5CmhVUHME2ewfvnF0ck/2gILFU2aLWKzYiXUsAPhbprxKKoRviNjADI4goGYu77Hlldhvog5nbyq6VNVsCr1Z/hASoiqu/ka+ptQ+Sp28w6io9myB7BplMPzHfA\u003d\u003d"
+        }
+      ],
+      "slicer": {
+        "js": [
+          {
+            "path": "${package.dir}/sass/example/custom.js",
+            "isWidgetManifest": true
+          }
+        ]
+      },
+      "builds": {
+        "su-classic": {
+          "toolkit": "classic",
+          "theme": "theme-classic",
+          "name": "su-classic"
+        },
+        "su-modern": {
+          "toolkit": "modern",
+          "theme": "theme-material",
+          "name": "su-modern"
+        }
+      }
     }
   ]
 }
