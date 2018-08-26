@@ -1,0 +1,23 @@
+{
+  "data": {
+    "created": "2018-04-22T11:54:34Z",
+    "email": "support@skillunion.ru",
+    "expires": "2023-04-23T00:00:00Z",
+    "name": "skillunion",
+    "uuid": "9da30b13-e739-45ac-9079-2d08301715fa"
+  },
+  "publicKey": {
+    "algorithm": "RSA",
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkIRy/Is2UlKGn0EYTVtBTYeeoTmHGgH5y3vvLTYrOdgtDHk60ckOpBMATfpvFX3MX+6GaL7nggYJuFTQ+XRJPhwLvZxQsuzEIuAOgty7xjd7nCu/vXbVLVuPhVILeIezsAwobrH+a8r+WAWKXlaZBYXSvcjuFewvAqoJDaH0EZ+Dpst0JBVffEnUrFI1bbnlO5cSVoPsk18FeE8hH7GN5kJskLOcwFOnXUTeetP69tahC4jkykpE3L18cn2T4h0oEoBE3JYqSbddaIBBfcq7jyNA7yIPbIeQzKgMXObLGGbQfj2VXn7wMn9Av/Un9WkYiINWQWDbeOkD0CXDLkaCewIDAQAB"
+  },
+  "signatures": [
+    {
+      "name": "skillunion",
+      "uuid": "9da30b13-e739-45ac-9079-2d08301715fa",
+      "created": "2018-04-22T11:54:35Z",
+      "algorithm": "SHA1withRSA",
+      "nonce": "gvdL5jkTn8w\u003d",
+      "signature": "VYpCr71R7ilYI2fSEblHG5OHeVr3v9o0ExgsET/Q/rovuakdMPIjlFtMp+PKG+AIfSkO8LwAoViVrYAao+Wde4p8x0db+0/w7TYlg2NHN9HCAdSE61RbBi7I7SC9/Vj/LXInhHhssMsV+Aass9AMrazUmlVpY3DQvI7ijzcMO/7QAI2coAD2AzqzqSFkT+K4OTFeTazqEBlZ4xS0TWrw1SiJuHhOvgEqiSWRbPUE/gvj8Cce16FvA0f5Y4eHP5OQXOB92Uh2U7Q7p/jf/Bmonu3VnJjn4dDL/mEhIYAM+a9DMOLbmQvfU8CNMugq6sO+6LKNeg9W8T2gzSenRiyyPw\u003d\u003d"
+    }
+  ]
+}

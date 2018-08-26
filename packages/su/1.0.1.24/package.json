@@ -1,0 +1,73 @@
+{
+  "name": "su",
+  "namespace": "SU",
+  "format": "1",
+  "version": "1.0.1.24",
+  "compatVersion": "1.0.1",
+  "creator": "skillunion",
+  "summary": "SU Core",
+  "detailedDescription": "Skill Union Core Library",
+  "type": "code",
+  "signatures": [
+    {
+      "name": "skillunion",
+      "uuid": "9da30b13-e739-45ac-9079-2d08301715fa",
+      "created": "2018-08-26T21:51:04Z",
+      "algorithm": "SHA1withRSA",
+      "nonce": "m3DIeLqy+/w\u003d",
+      "signature": "H0SYs2Rn0lZs+a5cfyc/vcOLrkAAiQ/QKIUYTkAxeYyHpAtZeSGluxO16P1mWzHf8J0KxWLqjaUN5ovaLaEJz5a4/gHEsrhF9VURjQG1hIWuv1Iz17MyPbe7RA2t2tZNJzmyjFE1Q+NMpqrR6larPDgiT0C5E70zkBv6+/1au0ARBII7Y1jePbb0Y8w5DBsYQU0yrXa/kPFBQkJxR25582JyPhgE3bNlMXNjXRC5SwInMkoqqie0/daG6kXeo+MvaDnlUpkgQx9GOaRJV3FXFMDXDXdHo/LCYyQJPFn9etFh8/tf0iRqIP8O9O3xOpbxjYZYUH5jsVXEvAi64eLtdg\u003d\u003d"
+    }
+  ],
+  "slicer": {
+    "js": [
+      {
+        "path": "${package.dir}/sass/example/custom.js",
+        "isWidgetManifest": true
+      }
+    ]
+  },
+  "builds": {
+    "su-classic": {
+      "toolkit": "classic",
+      "theme": "theme-classic",
+      "name": "su-classic"
+    },
+    "su-modern": {
+      "toolkit": "modern",
+      "theme": "theme-material",
+      "name": "su-modern"
+    }
+  },
+  "framework": "ext",
+  "toolkit": "classic",
+  "output": "${workspace.packages.dir}/build/${build.id}",
+  "sass": {
+    "namespace": "SU",
+    "etc": [
+      "${package.dir}/sass/etc/all.scss",
+      "${package.dir}/${toolkit.name}/sass/etc/all.scss"
+    ],
+    "var": [
+      "${package.dir}/sass/var",
+      "${package.dir}/${toolkit.name}/sass/var"
+    ],
+    "src": [
+      "${package.dir}/sass/src",
+      "${package.dir}/${toolkit.name}/sass/src"
+    ]
+  },
+  "classpath": [
+    "${package.dir}/src",
+    "${package.dir}/${toolkit.name}/src",
+    null
+  ],
+  "overrides": [
+    "${package.dir}/overrides",
+    "${package.dir}/${toolkit.name}/overrides",
+    null
+  ],
+  "properties": {
+    "skip.sass": 0,
+    "skip.slice": 1
+  }
+}
