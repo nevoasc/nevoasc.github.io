@@ -164,6 +164,88 @@
           "name": "su-modern"
         }
       }
+    },
+    {
+      "name": "su",
+      "namespace": "SU",
+      "format": "1",
+      "version": "1.0.1.25",
+      "compatVersion": "1.0.1",
+      "creator": "skillunion",
+      "summary": "SU Core",
+      "detailedDescription": "Skill Union Core Library",
+      "type": "code",
+      "signatures": [
+        {
+          "name": "skillunion",
+          "uuid": "9da30b13-e739-45ac-9079-2d08301715fa",
+          "created": "2018-08-26T22:07:55Z",
+          "algorithm": "SHA1withRSA",
+          "nonce": "8FdYRgQHMNs\u003d",
+          "signature": "Ave0OEN5LJXTAuthXyYaMP2sROcXmsTSYLPG+azxtJ2xJWI9f+Nfz99GxdICR4pFNo0ZyFpK/Dg3oxWSHzuokqoKQgF2+2ql11Etqj1YU3Vn/rmmPsaP0gGg7DlIWNJI3aibtbhZuQPZgYjqwp1yAo4iW3qjvERbzndIMq1dlcQ14fKQ9wsti9LjuawXp6zwxwSq3aIvBCjONPDGqDhz7uIvRghA+y0Q1pu4uaeqO4e5sZzhr2akYrqUSF/jHUEsqeqZc+jdEg15rJiqT0Pbo5f9ikcLkiWNQprX12m41RbPQ3ipjdCNns3jYdj3DJbUHS6iGypRmzD9KQZhVO9k/w\u003d\u003d"
+        }
+      ],
+      "slicer": {
+        "js": [
+          {
+            "path": "${package.dir}/sass/example/custom.js",
+            "isWidgetManifest": true
+          }
+        ]
+      },
+      "builds": {
+        "su-classic": {
+          "toolkit": "classic",
+          "theme": "theme-classic",
+          "name": "su-classic"
+        },
+        "su-modern": {
+          "toolkit": "modern",
+          "theme": "theme-material",
+          "name": "su-modern"
+        }
+      }
+    },
+    {
+      "name": "su",
+      "namespace": "SU",
+      "format": "1",
+      "version": "1.0.1.26",
+      "compatVersion": "1.0.1",
+      "creator": "skillunion",
+      "summary": "SU Core",
+      "detailedDescription": "Skill Union Core Library",
+      "type": "code",
+      "signatures": [
+        {
+          "name": "skillunion",
+          "uuid": "9da30b13-e739-45ac-9079-2d08301715fa",
+          "created": "2018-08-26T22:26:13Z",
+          "algorithm": "SHA1withRSA",
+          "nonce": "EUAyx8Tyiic\u003d",
+          "signature": "APvGYJa3rnxGvDPRJ7lXgMYwcFWxQ0brFNCg8c+cZfgZjrdk7p0x/ki2N482PTBe91mIJKcv0CKwQNtyNA9F4lCCmf3FhDDQQeEl/ESjdbzb7Qw9YmFdEESIxeklWw3rLdSzoqxkiCwGIqpVC6OMykUiyaGq/4p1sFkbYgH7/oxGSHhE3u8drdE9fKaHk04JoyTmxy5vf61F6EeqvsdUWocKAzFRFHIj9PT1EmYj2wjTsNE0pXXUwkLOorE6HmYkSET77To6CpPzN+Zmpad+MXb4ovkAclk04abMXxeyxR4M6m2MjE/cAN6rq4TCMvq5imhnguo30kR7Mr/ftZYbBQ\u003d\u003d"
+        }
+      ],
+      "slicer": {
+        "js": [
+          {
+            "path": "${package.dir}/sass/example/custom.js",
+            "isWidgetManifest": true
+          }
+        ]
+      },
+      "builds": {
+        "su-classic": {
+          "toolkit": "classic",
+          "theme": "theme-classic",
+          "name": "su-classic"
+        },
+        "su-modern": {
+          "toolkit": "modern",
+          "theme": "theme-material",
+          "name": "su-modern"
+        }
+      }
     }
   ]
 }
