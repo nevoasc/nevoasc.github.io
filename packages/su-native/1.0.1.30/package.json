@@ -1,0 +1,57 @@
+{
+  "name": "su-native",
+  "namespace": "SU",
+  "format": "1",
+  "version": "1.0.1.30",
+  "compatVersion": "1.0.1",
+  "creator": "skillunion",
+  "summary": "Short summary",
+  "detailedDescription": "Long description of package",
+  "type": "toolkit",
+  "signatures": [
+    {
+      "name": "skillunion",
+      "uuid": "9da30b13-e739-45ac-9079-2d08301715fa",
+      "created": "2018-08-27T08:33:47Z",
+      "algorithm": "SHA1withRSA",
+      "nonce": "jEaG5odtg64\u003d",
+      "signature": "dNQXWRLBBLYRpYDKRkcaD60pJ2NKliFPtm2BAfYCrOrc9S5Bprt+xdetZ44PdBsYfSpdltgwklhMW5sjMG8SbEbeXfxBF2IPEkhltcikPzM9bFmJJRtwWxbcZBADmDUwx0I580SlJGqfXkrEH221y5f1SMPIZgitv54V/3SUyNFHJriH4g9rssg83dx7ab17y9mrCzsfWZHcRVEt2RK4Gt6TH2U3tUXfIgGpizz68DtuhsTfwISlq5QadUBnChuoMFA/8xke277lH81MwObqF0NrHsi5NTr8VBirNWVc9oIKlzFG776W9U99r9O2luRQMn3VTAxIf01zoxnGnG4PQg\u003d\u003d"
+    }
+  ],
+  "slicer": {
+    "js": [
+      {
+        "path": "${package.dir}/sass/example/custom.js",
+        "isWidgetManifest": true
+      }
+    ]
+  },
+  "framework": "ext",
+  "buildOptions": {
+    "modern": true
+  },
+  "output": "${workspace.packages.dir}/build",
+  "sass": {
+    "namespace": "SU",
+    "etc": [
+      "${package.dir}/sass/etc/all.scss"
+    ],
+    "var": [
+      "${package.dir}/sass/var"
+    ],
+    "src": [
+      "${package.dir}/sass/src"
+    ]
+  },
+  "classpath": [
+    "${package.dir}/src"
+  ],
+  "overrides": [
+    "${package.dir}/overrides"
+  ],
+  "example": {
+    "path": [
+      "${package.dir}/examples"
+    ]
+  }
+}
