@@ -386,6 +386,38 @@
           }
         ]
       }
+    },
+    {
+      "name": "su-native",
+      "namespace": "SU",
+      "format": "1",
+      "version": "1.0.1.44",
+      "compatVersion": "1.0.1",
+      "creator": "skillunion",
+      "summary": "Short summary",
+      "detailedDescription": "Long description of package",
+      "type": "code",
+      "requires": [
+        "su"
+      ],
+      "signatures": [
+        {
+          "name": "skillunion",
+          "uuid": "9da30b13-e739-45ac-9079-2d08301715fa",
+          "created": "2018-09-02T19:49:15Z",
+          "algorithm": "SHA1withRSA",
+          "nonce": "NgHpTO2p+Ck\u003d",
+          "signature": "VRKkcQt0OXS/ADuiqRbuUbaGPx4ypv73nNFfl/JKnvmoKzXgYhsabhwff8g3mg4eMO7kuAxQZ8uFKUXKqW7J1eoLiJcT5kDIUVcyoo/xA8syqKN143X0edlN+8PrWplIr/1HVF5UURLa+WhdpaX+RcQmNf2A5HgsT2JDZNaD7AqI3O6U8/Oc1kPE8NR2tEHR0H6R5184DV36CjDBwrVusPU9UTn1e+Npl039uVtLCxXBoCdA4ACuRA7UI5yV4WNU1nShxf/n+jVBxQRF/l9bl+onf9DCe/X9Bjti+4YIMxPqNiedNbylmCd+6jyYSqgLsmMAs3XDW+aPmLaGGz7hfA\u003d\u003d"
+        }
+      ],
+      "slicer": {
+        "js": [
+          {
+            "path": "${package.dir}/sass/example/custom.js",
+            "isWidgetManifest": true
+          }
+        ]
+      }
     }
   ]
 }
