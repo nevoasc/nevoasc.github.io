@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">
+Ext.define(&quot;SU.PulseButton&quot;, {
+    extend: &quot;Ext.Component&quot;,
+    alias: &quot;widget.pulsebutton&quot;,
+
+    floated: true,
+    baseCls: &#39;x-pulsebutton&#39;,
+
+    cachedConfig: {
+        eventHandlers: {
+            click: &#39;onClick&#39;
+        }
+    },
+
+    config: {
+        iconCls: null,
+
+        handler: null,
+
+        scope: null
+    },
+
+    height: 32,
+    width: 32,
+
+    preventDefaultAction: true,
+
+    element:{
+        tag: &#39;a&#39;,
+        reference: &#39;element&#39;
+    },
+
+    template: [
+        {
+            reference: &#39;circleElement&#39;,
+            style: &quot;transform-origin: center;&quot;,
+            cls: &quot;x-pulse-circle&quot;
+        },
+        {
+            reference: &#39;fillElement&#39;,
+            style: &quot;transform-origin: center;&quot;,
+            cls: &quot;x-pulse-circle-fill&quot;
+        },
+        {
+            reference: &#39;innerElement&#39;,
+            style: &quot;transform-origin: center;&quot;,
+            cls: &quot;x-pulse-icon-circle&quot;,
+            onclick: &#39;return Ext.doEv(this, event);&#39;,
+            children: [
+                {
+                    reference: &#39;iconElement&#39;,
+                    style: &quot;transform-origin: center;&quot;,
+                    cls: &quot;x-pulse-icon-circleblock&quot;,
+                }
+            ]
+        },
+    ],
+
+    updateIconCls: function (iconCls, oldIconCls) {
+        var me = this,
+            element = me.iconElement;
+
+        if (iconCls) {
+            element.replaceCls(oldIconCls, iconCls);
+        } else {
+            element.removeCls(oldIconCls);
+        }
+    },
+
+    updateHeight: function (height, oldHeight) {
+        var me = this,
+            element = me.iconElement,
+            circle = me.circleElement;
+
+        element.setHeight(height);
+        element.setStyle(&#39;lineHeight&#39;, height + &#39;px&#39;);
+        element.setStyle(&#39;fontSize&#39;, (height * .6) + &#39;px&#39;);
+
+        me.fillElement.setHeight(height * 1.4);
+        me.innerElement.setTop((height * 1.4 - height) / 2);
+        circle.setHeight(height * 2);
+        circle.setTop((height * 1.4 - height * 2) / 2);
+    },
+
+    updateWidth: function (width, oldWidth) {
+        var me = this,
+            element = me.iconElement,
+            circle = me.circleElement;
+
+        element.setWidth(width);
+        me.fillElement.setWidth(width * 1.4);
+        me.innerElement.setLeft((width * 1.4 - width) / 2);
+        circle.setWidth(width * 2);
+        circle.setLeft((width * 1.4 - width * 2) / 2);
+    },
+
+    onClick: function (e) {
+        return this.onTap(e);
+    },
+
+    onTap: function (e) {
+        if (this.getDisabled()) {
+            return false;
+        }
+
+        this.fireAction(&#39;tap&#39;, [this, e], &#39;doTap&#39;);
+    },
+
+    doTap: function (me, e) {
+        var handler = me.getHandler();
+
+        if (e &amp;&amp; e.preventDefault &amp;&amp; me.preventDefaultAction) {
+            e.preventDefault();
+        }
+
+        if (handler) {
+            Ext.callback(handler, me.getScope(), [me, e], 0, me);
+        }
+    }
+
+});
+</pre>
+</body>
+</html>

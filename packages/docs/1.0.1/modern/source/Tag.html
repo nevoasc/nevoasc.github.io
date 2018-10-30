@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='SU-field-Tag'>/**
+</span> * Поле выбора нескольких значений из списка.
+ * 
+ *     @example 
+ *     var shows = Ext.create(&#39;Ext.data.Store&#39;, {
+ *         fields: [&#39;id&#39;,&#39;show&#39;],
+ *         data: [
+ *             {id: 0, show: &#39;Battlestar Galactica&#39;},
+ *             {id: 1, show: &#39;Doctor Who&#39;},
+ *             {id: 2, show: &#39;Farscape&#39;},
+ *             {id: 3, show: &#39;Firefly&#39;},
+ *             {id: 4, show: &#39;Star Trek&#39;},
+ *             {id: 5, show: &#39;Star Wars: Christmas Special&#39;}
+ *         ]
+ *     });
+ *     
+ *     Ext.create(&#39;Ext.Panel&#39;, {
+ *         fullscreen: true,
+ *         title: &#39;Sci-Fi Television&#39;,
+ *         items: [{
+ *             xtype: &#39;tagfield&#39;,
+ *             label: &#39;Select a Show&#39;,
+ *             store: shows,
+ *             displayField: &#39;show&#39;,
+ *             valueField: &#39;id&#39;
+ *         }]
+ *     });
+ * 
+ * @history 28.08.2018 Выявлен глюк в мобилке с edgePicker
+ * Свойство #picker выставлено в `floated`
+ */
+Ext.define(&#39;SU.field.Tag&#39;, {
+        extend: &#39;Ext.field.Picker&#39;,
+        alternateClassName: [&#39;Ext.field.Tag&#39;, &#39;Ext.form.field.Tag&#39;],
+        xtype: &quot;tagfield&quot;,
+
+        requires: [
+            &quot;Ext.picker.Picker&quot;
+        ],
+
+        config: {
+<span id='SU-field-Tag-cfg-store'>            /**
+</span>             * @cfg {Ext.data.Store/Object/String} store
+             * The store to provide selection options data. Either a Store instance,
+             * configuration object or store ID.
+             * @accessor
+             */
+            store: null,
+
+<span id='SU-field-Tag-cfg-displayField'>            /**
+</span>             * @cfg {String/Number} displayField
+             * The underlying {@link Ext.data.Field#name data value name} to bind to this
+             * Select control.  If configured as `null`, the #valueField is used.
+             *
+             * This resolved value is the visibly rendered value of the available selection
+             * options.
+             * @accessor
+             */
+            displayField: &quot;text&quot;,
+
+<span id='SU-field-Tag-cfg-valueField'>            /**
+</span>             * @cfg {String/Number} valueField
+             * The underlying {@link Ext.data.Field#name data value name} to bind to this
+             * Select control. If configured as `null`, the #displayField is used.
+             * @accessor
+             */
+            valueField: &quot;id&quot;,
+
+<span id='SU-field-Tag-cfg-floatedPicker'>            floatedPicker: {
+</span>                xtype: &quot;list&quot;,
+                selectable: &quot;multi&quot;
+            },
+            
+<span id='SU-field-Tag-cfg-edgePicker'>            edgePicker: {
+</span>                xtype: &quot;list&quot;,
+                selectable: &quot;multi&quot;
+            }
+        },
+
+<span id='SU-field-Tag-property-isField'>        isField: true,
+</span>
+<span id='SU-field-Tag-property-isInputField'>        // @inheritdoc
+</span>        isInputField: false,
+
+<span id='SU-field-Tag-property-isSelectField'>        // @inheritdoc
+</span>        isSelectField: true,
+
+<span id='SU-field-Tag-property-classCls'>        classCls: Ext.baseCSSPrefix + &quot;tagfield&quot;,
+</span>
+<span id='SU-field-Tag-cfg-picker'>        picker: &#39;floated&#39;,
+</span>        
+<span id='SU-field-Tag-cfg-listeners'>        listeners: {
+</span>            keyup: function () {
+                var me = this,
+                    v = me.getInputValue();
+
+                if (v &amp;&amp; v.length) {
+                    me.getStore().filterBy(function (rec) {
+                        return rec.get(me.getDisplayField())
+                            .match(new RegExp(me.getInputValue(), &quot;gi&quot;)) !== null;
+                    });
+                } else {
+                    me.getStore().clearFilter();
+                }
+            }
+        },
+
+<span id='SU-field-Tag-method-applyDisplayField'>        applyDisplayField: function (displayField) {
+</span>            if (displayField == null) {
+                displayField = this.getValueField();
+            }
+            return displayField;
+        },
+
+<span id='SU-field-Tag-method-applyValueField'>        applyValueField: function (valueField) {
+</span>            if (valueField == null) {
+                valueField = this.getDisplayField();
+            }
+            return valueField;
+        },
+
+<span id='SU-field-Tag-method-applyStore'>        applyStore: function (store) {
+</span>            if (store) {
+                store = Ext.data.StoreManager.lookup(store);
+            }
+            return store;
+        },
+
+<span id='SU-field-Tag-method-createFloatedPicker'>        createFloatedPicker: function () {
+</span>            var me = this;
+
+            return Ext.merge({
+                ownerCmp: me,
+                store: me.getStore(),
+                itemTpl: &quot;{&quot; + me.getDisplayField() + &quot;}&quot;,
+                listeners: {
+                    select: me.onSelect,
+                    deselect: me.onDeselect,
+                    scope: me
+                }
+            }, me.getFloatedPicker());
+        },
+
+<span id='SU-field-Tag-method-createEdgePicker'>        createEdgePicker: function () {
+</span>            var me = this;
+
+            return Ext.merge({
+                ownerCmp: me,
+                store: me.getStore(),
+                itemTpl: &quot;{&quot; + me.getDisplayField() + &quot;}&quot;,
+                listeners: {
+                    select: me.onSelect,
+                    deselect: me.onDeselect,
+                    scope: me
+                }
+            }, me.getEdgePicker());
+        },
+
+<span id='SU-field-Tag-method-getValue'>//        updatePicker: function(picker, oldPicker){
+</span>//            this.callParent(arguments);
+//            console.log(picker);
+//        },
+        
+        getValue: function () {
+            var keys = Object.keys(this.selected),
+                values = [];
+
+            for (var i = 0, len = keys.length; i &lt; len; i++) {
+                values.push(this.selected[keys[i]].get(this.getValueField()));
+            }
+
+            return values;
+        },
+
+<span id='SU-field-Tag-method-setValue'>        setValue: function (value) {
+</span>            var selection = [];
+
+            if (Ext.isString(value)) {
+                value = value.split(&quot;,&quot;);
+            }
+
+            if (!(value instanceof Array)) {
+                value = Ext.Array.from(value);
+            }
+
+            for (var i = 0, len = value.length, store = this.getStore(), f; i &lt; len; i++) {
+                f = store.getAt(store.findExact(this.getValueField(), value[i]));
+                if (f) {
+                    selection.push(f);
+                }
+            }
+
+            if (selection.length) {
+                this.getPicker().select(selection);
+            }
+
+            if (!this.expanded) {
+                this.syncLabelPlaceholder(true);
+            }
+        },
+
+<span id='SU-field-Tag-method-updateInputValue'>        // Do nothing!
+</span>        updateInputValue: function () { },
+
+<span id='SU-field-Tag-method-validate'>        validate: function (skipLazy) {
+</span>            var me = this,
+                empty,
+                errors,
+                field,
+                record,
+                validity,
+                value;
+
+            if (me.isConfiguring &amp;&amp; me.validateOnInit === &quot;none&quot;) {
+                return true;
+            }
+
+            if (!me.getDisabled() || me.getValidateDisabled()) {
+                errors = [];
+
+                if (me.isInputField &amp;&amp; !me.isSelectField) {
+                    value = me.getInputValue();
+                    empty = !value;
+                    validity = empty &amp;&amp; me.inputElement.dom.validity;
+                    if (validity &amp;&amp; validity.badInput) {
+                        errors.push(me.badFormatMessage);
+                        empty = false;
+                    }
+                } else {
+                    value = me.getValue();
+                    empty = value === &quot;&quot; || value == null || !value.length;
+                }
+
+                if (empty &amp;&amp; me.getRequired()) {
+                    errors.push(me.getRequiredMessage());
+                } else if (!errors.length) {
+                    if (!empty) {
+                        value = me.parseValue(value, errors);
+                    }
+                    if (!errors.length) {
+                        field = me._validationField;
+                        record = me._validationRecord;
+
+                        if (field &amp;&amp; record) {
+                            field.validate(value, null, errors, record);
+                        }
+
+                        if (!empty) {
+                            me.doValidate(value, errors, skipLazy);
+                        }
+                    }
+                }
+                if (errors.length) {
+                    me.setError(errors);
+                    return false;
+                }
+            }
+
+            me.setError(null);
+            return true;
+        },
+
+<span id='SU-field-Tag-property-privates'>        //@hide
+</span>        privates: {
+<span id='SU-field-Tag-property-selected'>            /**
+</span>             * @property {Object} selected
+             *
+             * Набор выбранных записей в виде ключ -&gt; запись.
+             * В качестве ключа принимается значение поля, указаного в #valueField.
+             *
+             * @private
+             */
+            selected: {},
+
+<span id='SU-field-Tag-method-onSelect'>            /**
+</span>             * Обработка выбора записи в списке
+             *
+             * @param {Ext.dataview.DataView} view
+             * @param {Ext.data.Model/Ext.data.Model[]} selected
+             * @private
+             */
+            onSelect: function (view, selected) {
+                selected = Ext.Array.from(selected);
+
+                var me = this,
+                    i = 0,
+                    len = selected.length;
+
+                while (i &lt; len) {
+                    me.selected[selected[i].get(me.getValueField())] = selected[i];
+                    me.addTag(selected[i]);
+                    i++;
+                }
+
+                me.validate();
+                me.fireEvent(&quot;change&quot;, me.getValue());
+            },
+
+<span id='SU-field-Tag-method-onDeselect'>            /**
+</span>             * Обработка отмены выбора записи в списке
+             *
+             * @param {Ext.dataview.DataView} view
+             * @param {Ext.data.Model/Ext.data.Model[]} selected
+             * @private
+             */
+            onDeselect: function (view, selected) {
+                var me = this,
+                    i = 0,
+                    len = selected.length;
+
+                while (i &lt; len) {
+                    delete me.selected[selected[i].get(me.getValueField())];
+                    me.removeTag(selected[i]);
+                    i++;
+                }
+                me.validate();
+                me.fireEvent(&quot;change&quot;, me.getValue());
+            },
+
+<span id='SU-field-Tag-method-addTag'>            /**
+</span>             *
+             * @param {Ext.data.Model} tag
+             * @private
+             */
+            addTag: function (tag) {
+                var me = this,
+                    el = document.createElement(&quot;span&quot;);
+
+                el.id = me.id + &quot;-tag-&quot; + tag.get(me.getValueField());
+                el.className = Ext.baseCSSPrefix + &quot;tag&quot;;
+                el.innerHTML = tag.get(me.getDisplayField()) +
+                    &#39; &lt;span class=&quot;x-tag-tool x-fa fa-close&quot; aria-hidden=&quot;true&quot;&gt;&amp;nbsp;&lt;/span&gt;&#39;;
+
+                el.querySelector(&quot;span&quot;)
+                    .addEventListener(&quot;click&quot;,
+                    Ext.bind(function () {
+                        this.getPicker().onItemDeselect([tag]);
+                        this.getPicker().setItemSelection([tag], false);
+                    },
+                        me)
+                    );
+
+                me.beforeInputElement.append(el);
+                me.beforeInputElement.setStyle({
+                    marginRight: &quot;10px&quot;
+                });
+            },
+
+<span id='SU-field-Tag-method-removeTag'>            /**
+</span>             *
+             * @param {Ext.data.Model} tag
+             * @private
+             */
+            removeTag: function (tag) {
+                var el = this.beforeInputElement.down(&quot;#&quot; + this.id + &quot;-tag-&quot; + tag.get(this.getValueField()));
+                if (el) {
+                    el.destroy();
+                }
+
+                if (!this.expanded) {
+                    this.syncLabelPlaceholder(true);
+                }
+            },
+
+<span id='SU-field-Tag-method-syncLabelPlaceholder'>            /**
+</span>             *
+             * @param {Boolean} animate
+             */
+            syncLabelPlaceholder: function (animate) {
+                var inside;
+                this._animPlaceholderLabel = animate;
+                if (this.rendered) {
+                    if (Object.keys(this.selected).length &gt; 0) {
+                        inside = false;
+                    } else {
+                        inside = !this.hasFocus || this.getDisabled() || this.getReadOnly();
+                    }
+                    this.setLabelInPlaceholder(inside);
+                }
+
+                this._animPlaceholderLabel = false;
+            }
+        }
+    });</pre>
+</body>
+</html>

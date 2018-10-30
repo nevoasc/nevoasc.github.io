@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='SU-data-field-Json'>/**
+</span> * @class SU.data.field.Json
+ * 
+ * Поле данных автоматически преобразующее значение JSON-строки в Object.
+ *
+ *
+ */
+Ext.define(&#39;SU.data.field.Json&#39;, {
+    extend: &#39;Ext.data.field.Field&#39;,
+    alternateClassName: [&#39;Ext.data.field.Json&#39;],
+
+    alias: &#39;data.field.json&#39;,
+
+<span id='SU-data-field-Json-property-isJsonField'>    isJsonField: true,
+</span>
+<span id='SU-data-field-Json-method-convert'>    /**
+</span>     * @inheritdoc
+     * @localdoc
+     * Преобразование JSON-строки в Object.
+     * 
+     * При неудачном преобразовании возвращает null или пучтой массив
+     * в зависимости от #allowNull.
+     * 
+     * @param {Mixed} v
+     * @returns {Mixed}
+     */
+    convert: function (v) {
+        if (v === undefined || v === null || v === &quot;&quot;) {
+            return this.allowNull ? null : [];
+        }
+
+        if (typeof v === &quot;string&quot;) {
+            try {
+                v = JSON.parse(v || &quot;[]&quot;);
+            } catch (e) {
+                //&lt;debug&gt;
+                console.log(e);
+                //&lt;/debug&gt;
+                return this.allowNull ? null : [];
+            }
+        }
+
+        return v;
+    },
+
+<span id='SU-data-field-Json-method-serialize'>    /**
+</span>     * @inheritdoc
+     * 
+     * @param {Mixed} v
+     * @param {Ext.data.Model} record
+     * @returns {String}
+     */
+    serialize: function (v, record) {
+        if (this.allowNull &amp;&amp; (v === undefined || v === null)) {
+            return null;
+        }
+
+        return v ? JSON.stringify(v) : null;
+    },
+
+<span id='SU-data-field-Json-method-getType'>    /**
+</span>     * @inheritdoc
+     * 
+     * @returns {String}
+     */
+    getType: function () {
+        return &quot;json&quot;;
+    }
+});
+    </pre>
+</body>
+</html>
