@@ -12,10 +12,10 @@
 		"text":"1.0.1",
 		"menu":[{
 			"text":"classic",
-			"href":"1.0.1/classic"
+			"href":"../../1.0.1/classic"
 		},{
 			"text":"modern",
-			"href":"1.0.1/modern"
+			"href":"../../1.0.1/modern"
 		}]
 	}];
 })();
