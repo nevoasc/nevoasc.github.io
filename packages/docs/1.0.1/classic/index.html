@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="styles-ffa675a506f502109ac7b028808d7e53.css" type="text/css" />
 
   <!--script type="text/javascript" src="extjs/ext-all.js"></script-->
-  <script type="text/javascript" src="data-674de08f934e7c0cc61991489b061a63.js"></script>
+  <script type="text/javascript" src="data-f86670537adaa0041f1a7dcc95940b49.js"></script>
 
   <!-- BEGIN JS -->
   <script type="text/javascript" src="resources/codemirror/codemirror.js"></script>
@@ -37,7 +37,76 @@
   <div id="loading"><span class="title">Skill Union Library - classic</span><span class="logo"></span></div>
 
   <div id="header-content"><strong>Skill Union Library</strong> classic</div>
-  
+  <div id='welcome-content' style='display:none'><html>
+    <head>
+        <title>Release nodes</title>
+    </head>
+    <body>
+        <ul>
+            <li>
+                <h2>1.0.1.47</h2>
+                <ul>
+                    <li>
+                        <h3>su-classic</h3>
+                        <ul>
+                            <li>
+                                <strong></strong><span></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>su-modern</h3>
+                        <ul>
+                            <li><strong>SU.field.plugin.HighlightArea</strong><span> Добавлен плагин подсветки текста в TextArea</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>su-native</h3>
+                        <ul>
+                            <li>
+                                <strong></strong>
+                                <span></span>
+                            </li>
+                            <li>
+                                <strong></strong>
+                                <span></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><h2>1.0.1.46</h2>
+                <ul>
+                    <li><h3>su-modern</h3>
+                        <ul>
+                            <li><strong>SU.grid.TextAreaCellEditor</strong><span> Добавлена обработка TAB</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><h2>1.0.1.43</h2>
+                <ul>
+                    <li><h3>su-native</h3>
+                        <ul>
+                            <li><strong>SU.native.Network</strong><span> Добавлен класс</span></li>
+                            <li><strong>SU.native.Toast</strong><span> Override <tt>Ext.Toast</tt> для нативного вывода</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><h2>1.0.1.33</h2>
+                <ul>
+                    <li><h3>su-modern</h3>
+                        <ul>
+                            <li><strong>SU.field.Tag</strong><span> Выявлен глюк в мобилке с edgePicker. Свойство <b>picker</b> выставлено в <tt>floated</tt></span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>
+</div>
             <div id='categories-content' style='display:none'>
             <div class='section'>
 <h1>Ext</h1>
@@ -834,6 +903,7 @@
 <li><a href="#!/api/SU.WebSocket" rel="SU.WebSocket" class="docClass">SU.WebSocket</a>&nbsp;<span class='new-class' title='New class'>&#9733;</span></li>
 <li><a href="#!/api/SU.data.field.Json" rel="SU.data.field.Json" class="docClass">SU.data.field.Json</a></li>
 <li><a href="#!/api/SU.form.field.Search" rel="SU.form.field.Search" class="docClass">SU.form.field.Search</a></li>
+<li><a href="#!/api/SU.grid.feature.CheckboxGrouping" rel="SU.grid.feature.CheckboxGrouping" class="docClass">SU.grid.feature.CheckboxGrouping</a>&nbsp;<span class='new-class' title='New class'>&#9733;</span></li>
 <li><a href="#!/api/SU.utils.ShowEvents" rel="SU.utils.ShowEvents" class="docClass">SU.utils.ShowEvents</a>&nbsp;<span class='new-class' title='New class'>&#9733;</span></li>
 </ul>
 </div>
@@ -881,6 +951,7 @@
 <li><a href="#!/api/SU.storage.LocalStorageCookie" rel="SU.storage.LocalStorageCookie" class="docClass">SU.storage.LocalStorageCookie</a></li>
 <li><a href="#!/api/SU.utils.ShowEvents" rel="SU.utils.ShowEvents" class="docClass">SU.utils.ShowEvents</a></li>
 <li><a href="#!/api/SU.WebSocket" rel="SU.WebSocket" class="docClass">SU.WebSocket</a></li>
+<li><a href="#!/api/SU.grid.feature.CheckboxGrouping" rel="SU.grid.feature.CheckboxGrouping" class="docClass">SU.grid.feature.CheckboxGrouping</a></li>
 <li><a href="#!/api/SU.LangSelect" rel="SU.LangSelect" class="docClass">SU.LangSelect</a></li>
 </ul>
 <h3>Ext.Widget</h3>
@@ -894,6 +965,10 @@
 <li><a href="#!/api/Ext.chart.navigator.Navigator" rel="Ext.chart.navigator.Navigator" class="docClass">innerPadding</a></li>
 <li><a href="#!/api/Ext.chart.navigator.Navigator" rel="Ext.chart.navigator.Navigator" class="docClass">insetPadding</a></li>
 </ul>
+<h3>Ext.enums.Feature</h3>
+<ul class='links'>
+<li><a href="#!/api/Ext.enums.Feature-property-checkboxgrouping" rel="Ext.enums.Feature-property-checkboxgrouping" class="docClass">checkboxgrouping</a></li>
+</ul>
 <h3>Ext.enums.Plugin</h3>
 <ul class='links'>
 <li><a href="#!/api/Ext.enums.Plugin-property-localization" rel="Ext.enums.Plugin-property-localization" class="docClass">localization</a></li>
@@ -903,13 +978,13 @@
 <li><a href="#!/api/Ext.enums.Widget-property-languagefield" rel="Ext.enums.Widget-property-languagefield" class="docClass">languagefield</a></li>
 <li><a href="#!/api/Ext.enums.Widget-property-searchfield" rel="Ext.enums.Widget-property-searchfield" class="docClass">searchfield</a></li>
 </ul>
+</div>
+<div class='right-column'>
 <h3>SU.form.field.Search</h3>
 <ul class='links'>
 <li><a href="#!/api/SU.form.field.Search-cfg-listeners" rel="SU.form.field.Search-cfg-listeners" class="docClass">listeners</a></li>
 <li><a href="#!/api/SU.form.field.Search-cfg-reuse" rel="SU.form.field.Search-cfg-reuse" class="docClass">reuse</a></li>
 </ul>
-</div>
-<div class='right-column'>
 <h3>SU.locale.model.ClientModel</h3>
 <ul class='links'>
 <li><a href="#!/api/SU.locale.model.ClientModel-cfg-fields" rel="SU.locale.model.ClientModel-cfg-fields" class="docClass">fields</a></li>
@@ -922,19 +997,13 @@
 <ul class='links'>
 <li><a href="#!/api/global-property-DEBUG_CONNECTION" rel="global-property-DEBUG_CONNECTION" class="docClass">DEBUG_CONNECTION</a></li>
 <li><a href="#!/api/global-property-DEBUG_LOCALE" rel="global-property-DEBUG_LOCALE" class="docClass">DEBUG_LOCALE</a></li>
-<li><a href="#!/api/global-method-checkAllGroups" rel="global-method-checkAllGroups" class="docClass">checkAllGroups</a></li>
-<li><a href="#!/api/global-property-checkDataIndex" rel="global-property-checkDataIndex" class="docClass">checkDataIndex</a></li>
-<li><a href="#!/api/global-property-checkOnly" rel="global-property-checkOnly" class="docClass">checkOnly</a></li>
-<li><a href="#!/api/global-property-injectCheckbox" rel="global-property-injectCheckbox" class="docClass">injectCheckbox</a></li>
-<li><a href="#!/api/global-method-refreshView" rel="global-method-refreshView" class="docClass">refreshView</a></li>
-<li><a href="#!/api/global-property-startCollapsed" rel="global-property-startCollapsed" class="docClass">startCollapsed</a></li>
 </ul>
 </div>
 <div style='clear:both'></div>
 </div>
 </div>
   
-  <div id='footer-content' style='display: none'>Generated on Fri 02 Nov 2018 13:10:29 by <a href='https://github.com/senchalabs/jsduck'>JSDuck</a> 6.0.0.3.</div>
+  <div id='footer-content' style='display: none'>Generated on Mon 12 Nov 2018 12:47:58 by <a href='https://github.com/senchalabs/jsduck'>JSDuck</a> 6.0.0.3.</div>
 
   <script src='../../menu.js' type='text/javascript'>
 

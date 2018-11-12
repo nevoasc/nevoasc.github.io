@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js">
 if( !(Ext.state &amp;&amp; Ext.state.CookieProvider) ){
 
-<span id='Ext-state-CookieProvider'>	/**
-</span>	 *
+	/*
+	 *
 	 */
 	Ext.define( &#39;Ext.state.CookieProvider&#39;, {
 
@@ -27,12 +27,12 @@ if( !(Ext.state &amp;&amp; Ext.state.CookieProvider) ){
 			observable: &#39;Ext.util.Observable&#39;
 		},
 
-<span id='Ext-state-CookieProvider-cfg-prefix'>		prefix: &#39;ext-&#39;,
-</span>
-<span id='Ext-state-CookieProvider-property-state'>		state: {},
-</span>
-<span id='Ext-state-CookieProvider-method-constructor'>		constructor : function( config ){
-</span>
+		prefix: &#39;ext-&#39;,
+
+		state: {},
+
+		constructor : function( config ){
+
 			var me = this;
 			me.path = &quot;/&quot;;
 			me.expires = new Date(Ext.Date.now() + (1000*60*60*24*7)); //7 days
@@ -44,13 +44,13 @@ if( !(Ext.state &amp;&amp; Ext.state.CookieProvider) ){
 			me.state = me.readCookies();
 		},
 
-<span id='Ext-state-CookieProvider-method-get'>		get : function(name, defaultValue){
-</span>			return typeof this.state[name] == &quot;undefined&quot; ?
+		get : function(name, defaultValue){
+			return typeof this.state[name] == &quot;undefined&quot; ?
 				defaultValue : this.state[name];
 		},
 
-<span id='Ext-state-CookieProvider-method-set'>		set: function( name, value ){
-</span>			var me = this;
+		set: function( name, value ){
+			var me = this;
 
 			if(typeof value == &quot;undefined&quot; || value === null){
 				me.clear(name);
@@ -61,15 +61,15 @@ if( !(Ext.state &amp;&amp; Ext.state.CookieProvider) ){
 			me.fireEvent(&quot;statechange&quot;, me, name, value);
 		},
 
-<span id='Ext-state-CookieProvider-method-clear'>		clear : function(name){
-</span>			var me = this;
+		clear : function(name){
+			var me = this;
 			me.clearCookie(name);
 			delete me.state[name];
 			me.fireEvent(&quot;statechange&quot;, me, name, null);
 		},
 
-<span id='Ext-state-CookieProvider-method-readCookies'>		readCookies : function(){
-</span>			var cookies = {},
+		readCookies : function(){
+			var cookies = {},
 				c = document.cookie + &quot;;&quot;,
 				re = /\s?(.*?)=(.*?);/g,
 				prefix = this.prefix,
@@ -88,8 +88,8 @@ if( !(Ext.state &amp;&amp; Ext.state.CookieProvider) ){
 			return cookies;
 		},
 
-<span id='Ext-state-CookieProvider-method-setCookie'>		// private
-</span>		setCookie : function(name, value){
+		// private
+		setCookie : function(name, value){
 			var me = this;
 
 			document.cookie = me.prefix + name + &quot;=&quot; + me.encodeValue(value) +
@@ -99,8 +99,8 @@ if( !(Ext.state &amp;&amp; Ext.state.CookieProvider) ){
 			   ((me.secure == true) ? &quot;; secure&quot; : &quot;&quot;);
 		},
 
-<span id='Ext-state-CookieProvider-method-clearCookie'>		// private
-</span>		clearCookie : function(name){
+		// private
+		clearCookie : function(name){
 			var me = this;
 
 			document.cookie = me.prefix + name + &quot;=null; expires=Thu, 01-Jan-1970 00:00:01 GMT&quot; +
@@ -109,8 +109,8 @@ if( !(Ext.state &amp;&amp; Ext.state.CookieProvider) ){
 			   ((me.secure == true) ? &quot;; secure&quot; : &quot;&quot;);
 		},
 
-<span id='Ext-state-CookieProvider-method-decodeValue'>		/**
-</span>		 * Decodes a string previously encoded with {@link #encodeValue}.
+		/*
+		 * Decodes a string previously encoded with {@link #encodeValue}.
 		 * @param {String} value The value to decode
 		 * @return {Mixed} The decoded value
 		 */
@@ -166,8 +166,8 @@ if( !(Ext.state &amp;&amp; Ext.state.CookieProvider) ){
 			}
 		},
 
-<span id='Ext-state-CookieProvider-method-encodeValue'>		/**
-</span>		 * Encodes a value including type information.  Decode with {@link #decodeValue}.
+		/*
+		 * Encodes a value including type information.  Decode with {@link #decodeValue}.
 		 * @param {Mixed} value The value to encode
 		 * @return {String} The encoded value
 		 */

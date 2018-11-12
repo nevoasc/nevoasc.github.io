@@ -20,7 +20,7 @@
  * 
  * Переопределяет метод Ext.isOnline
  *
- * Плагин: cordova-plugin-network-information
+ * Плагин: (cordova-plugin-network-information)[https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-network-information/]
  */
 Ext.define(&#39;SU.native.Network&#39;, {
     alternateClassName: [&#39;SU.Network&#39;],
@@ -30,6 +30,10 @@ Ext.define(&#39;SU.native.Network&#39;, {
         &#39;Ext.Toast&#39;
     ],
 
+    config: {
+<span id='SU-native-Network-cfg-signalling'>        signalling: true
+</span>    },
+    
 <span id='SU-native-Network-property-UNKNOWN'>    UNKNOWN: &#39;unknown&#39;,
 </span><span id='SU-native-Network-property-ETHERNET'>    ETHERNET: &#39;enternet&#39;,
 </span><span id='SU-native-Network-property-WIFI'>    WIFI: &#39;wifi&#39;,
@@ -69,13 +73,21 @@ Ext.define(&#39;SU.native.Network&#39;, {
     },
 
 <span id='SU-native-Network-method-onOnlineChange'>    onOnlineChange: function (e) {
-</span>        //Ext.Msg.alert(&#39;Event&#39;, SU.Network.connectionTypeName());
+</span>        //&lt;debug&gt;
         console.log(&#39;online change&#39;);
-        Ext.toast(SU.Network.connectionTypeName());
+        //&lt;/debug&gt;
+        if(this.getSignalling()){
+            Ext.toast({
+                message: SU.Network.connectionTypeName(),
+                styling: {
+                    backgroundColor: this.connectionType() === this.NONE ? &#39;#FF0000&#39; : &#39;#00FF00&#39;
+                }
+            });
+        }
         Ext.fireEvent(&#39;onlinechange&#39;, this.isOnline());
     }
 
-}, function (cls) {
+}, function () {
 
     Ext.onReady(function () {
         if (window.Connection) {

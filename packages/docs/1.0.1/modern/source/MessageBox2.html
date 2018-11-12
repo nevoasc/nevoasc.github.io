@@ -16,18 +16,17 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='SU-native-overrides-MessageBox'>/**
-</span> * 
+</span> * Подменяет окна сообщений Ext.Msg#alert, Ext.Msg#confirm 
+ * и Ext.Msg#prompt нативными диалогами при сборке в `cordova`
+ * с подключенным плагином 
+ * [cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs).
+ * 
  */
 Ext.define(&#39;SU.native.overrides.MessageBox&#39;, {
     override: &#39;Ext.MessageBox&#39;,
 
 <span id='Ext-MessageBox-property-nativeDialog'>    /**
 </span>     * @property {Boolean} nativeDialog
-     * Подменяет окна сообщений Ext.Msg#alert, Ext.Msg#confirm 
-     * и Ext.Msg#prompt нативными диалогами при сборке в `cordova`
-     * с подключенным плагином 
-     * [cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs).
-     * 
      * `false` выключает использование нативных диалогов
      */
     nativeDialog: false,

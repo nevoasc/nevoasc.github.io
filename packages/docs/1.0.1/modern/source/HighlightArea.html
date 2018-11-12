@@ -16,22 +16,31 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='SU-field-plugin-HighlightArea'>/**
-</span> * 
+</span> * Плагин подсветки текста в Ext.field.TextArea
  */
 Ext.define(&#39;SU.field.plugin.HighlightArea&#39;, {
     extend: &#39;Ext.plugin.Abstract&#39;,
     alias: &#39;plugin.highlightarea&#39;,
 
     config: {
-<span id='SU-field-plugin-HighlightArea-cfg-field'>        /**
-</span>         * @private
+<span id='SU-field-plugin-HighlightArea-cfg-field'>        field: null,
+</span>
+<span id='SU-field-plugin-HighlightArea-cfg-boundaries'>        /**
+</span>         * @cfg {Function}
+         * Функция для получения форматированного HTML
+         * 
+         * @param {SU.field.plugin.HighlightArea} me
+         * @param {Ext.field.TextArea} field
+         * @param {String} text
+         * @return {String}
          */
-        field: null,
+        boundaries: null,
 
-<span id='SU-field-plugin-HighlightArea-cfg-boundaries'>        boundaries: null,
-</span>
-<span id='SU-field-plugin-HighlightArea-cfg-scope'>        scope: null
-</span>
+<span id='SU-field-plugin-HighlightArea-cfg-scope'>        /**
+</span>         * @cfg {String/Object} scope
+         */
+        scope: null
+
     },
 
 <span id='SU-field-plugin-HighlightArea-method-init'>    init: function (field) {
@@ -102,12 +111,6 @@ Ext.define(&#39;SU.field.plugin.HighlightArea&#39;, {
             boundaries = me.getBoundaries();
 
         text = boundaries ? Ext.callback(boundaries, me.getScope(), [me, me.getField(), text], 0, me) : text;
-
-        //let ranges = this.getRanges(input, this.highlight);
-        //let unstaggeredRanges = this.removeStaggeredRanges(ranges);
-        //let boundaries = this.getBoundaries(unstaggeredRanges);
-        //this.renderMarks(boundaries);
-
         me.highlightEl.setHtml(text);
     },
 

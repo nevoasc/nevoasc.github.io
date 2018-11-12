@@ -15,35 +15,35 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">/*
- * 
+  <pre class="prettyprint lang-js"><span id='SU-grid-feature-CheckboxGrouping'>/**
+</span> * 
  */
 Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
     extend: &#39;Ext.grid.feature.Grouping&#39;,
     alias: &#39;feature.checkboxgrouping&#39;,
 
-<span id='global-property-checkDataIndex'>    /** @property */
+<span id='SU-grid-feature-CheckboxGrouping-property-checkDataIndex'>    /** @property */
 </span>    checkDataIndex: &#39;isChecked&#39;,
-<span id='global-property-startCollapsed'>    /** @property */
+<span id='SU-grid-feature-CheckboxGrouping-property-startCollapsed'>    /** @property */
 </span>    startCollapsed: true,
-<span id='global-property-injectCheckbox'>    /** @property */
+<span id='SU-grid-feature-CheckboxGrouping-property-injectCheckbox'>    /** @property */
 </span>    injectCheckbox: 0,
-<span id='global-property-checkOnly'>    /** @property */
+<span id='SU-grid-feature-CheckboxGrouping-property-checkOnly'>    /** @property */
 </span>    checkOnly: false,
 
-    headerWidth: 24,
-
-<span id='global-property-checkerOnCls'>    /**
+<span id='SU-grid-feature-CheckboxGrouping-property-headerWidth'>    headerWidth: 24,
+</span>
+<span id='SU-grid-feature-CheckboxGrouping-property-checkerOnCls'>    /**
 </span>     * @private
      */
     checkerOnCls: Ext.baseCSSPrefix + &#39;grid-hd-checker-on&#39;,
 
-    tdCls: Ext.baseCSSPrefix + &#39;grid-cell-special &#39; + Ext.baseCSSPrefix + &#39;selmodel-column&#39;,
-    targetCls: &#39;group-checkbox&#39;,
+<span id='SU-grid-feature-CheckboxGrouping-property-tdCls'>    tdCls: Ext.baseCSSPrefix + &#39;grid-cell-special &#39; + Ext.baseCSSPrefix + &#39;selmodel-column&#39;,
+</span><span id='SU-grid-feature-CheckboxGrouping-property-targetCls'>    targetCls: &#39;group-checkbox&#39;,
+</span>
 
-
-    init: function (grid) {
-        var store = grid.getStore(),
+<span id='SU-grid-feature-CheckboxGrouping-method-init'>    init: function (grid) {
+</span>        var store = grid.getStore(),
             view = grid.getView();
 
         view.on({
@@ -60,8 +60,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         this.callParent(arguments);
     },
 
-    beforeViewRender: function (view) {
-        var me = this,
+<span id='SU-grid-feature-CheckboxGrouping-method-beforeViewRender'>    beforeViewRender: function (view) {
+</span>        var me = this,
             selModel = view.grid.selModel,
             ownerLockable = view.grid.ownerLockable,
             isLocked = selModel.locked;
@@ -89,8 +89,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         me.dataSource.on(&#39;groupchange&#39;, me.onGroupChange, me);
     },
 
-    // —крываем checkbox при отсутствии группировки
-    onGroupChange: function (store, group) {
+<span id='SU-grid-feature-CheckboxGrouping-method-onGroupChange'>    // —крываем checkbox при отсутствии группировки
+</span>    onGroupChange: function (store, group) {
         var me = this,
             sm = me.grid.selModel;
 
@@ -105,8 +105,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         me.callParent(arguments);
     },
 
-    hasLockedHeader: function () {
-        var columns = this.grid.getVisibleColumnManager().getColumns(),
+<span id='SU-grid-feature-CheckboxGrouping-method-hasLockedHeader'>    hasLockedHeader: function () {
+</span>        var columns = this.grid.getVisibleColumnManager().getColumns(),
             len = columns.length, i;
 
         for (i = 0; i &lt; len; i++) {
@@ -117,8 +117,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         return false;
     },
 
-    onColumnUnlock: function (lockable, column) {
-        var me = this,
+<span id='SU-grid-feature-CheckboxGrouping-method-onColumnUnlock'>    onColumnUnlock: function (lockable, column) {
+</span>        var me = this,
             checkbox = me.injectCheckbox,
             lockedColumns = lockable.lockedGrid.visibleColumnManager.getColumns();
 
@@ -132,8 +132,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         }
     },
 
-    onColumnLock: function (lockable, column) {
-        var me = this,
+<span id='SU-grid-feature-CheckboxGrouping-method-onColumnLock'>    onColumnLock: function (lockable, column) {
+</span>        var me = this,
             checkbox = me.injectCheckbox,
             lockedColumns = lockable.lockedGrid.visibleColumnManager.getColumns();
 
@@ -147,7 +147,7 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         }
     },
 
-<span id='global-method-onBeforeReconfigure'>    /**
+<span id='SU-grid-feature-CheckboxGrouping-method-onBeforeReconfigure'>    /**
 </span>     * @param {Ext.panel.Table} grid
      * @param {Ext.data.Store} store
      * @param {Object[]} columns
@@ -162,7 +162,7 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         }
     },
 
-<span id='global-method-onReconfigure'>    /**
+<span id='SU-grid-feature-CheckboxGrouping-method-onReconfigure'>    /**
 </span>     * @param {Ext.panel.Table} grid
      * @param {Ext.data.Store} store
      * @param {Object[]} columns
@@ -194,8 +194,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
 
     },
 
-    addCheckbox: function (view) {
-        var me = this,
+<span id='SU-grid-feature-CheckboxGrouping-method-addCheckbox'>    addCheckbox: function (view) {
+</span>        var me = this,
             checkboxIndex = me.injectCheckbox,
             headerCt = view.headerCt;
 
@@ -211,8 +211,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         }
     },
 
-    getHeaderConfig: function () {
-        var me = this,
+<span id='SU-grid-feature-CheckboxGrouping-method-getHeaderConfig'>    getHeaderConfig: function () {
+</span>        var me = this,
             //htmlEncode = Ext.String.htmlEncode,
             config;
 
@@ -261,8 +261,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         return config;
     },
 
-    setupRowData: function (record, idx, rowValues) {
-        var me = this,
+<span id='SU-grid-feature-CheckboxGrouping-method-setupRowData'>    setupRowData: function (record, idx, rowValues) {
+</span>        var me = this,
             field = me.getGroupField();
 
         me.callParent(arguments);
@@ -272,7 +272,7 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         }
     },
 
-<span id='global-method-checkAllGroups'>    /**
+<span id='SU-grid-feature-CheckboxGrouping-method-checkAllGroups'>    /**
 </span>     * This method will only run once... on the initial load of the view... this
      * is so we can check the store for the grouped item&#39;s children... if they&#39;re
      * all checked, then we need to set the private variable to checked
@@ -310,8 +310,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         }
     },
 
-    updateParentRecord: function (groupName, checked) {
-        var me = this,
+<span id='SU-grid-feature-CheckboxGrouping-method-updateParentRecord'>    updateParentRecord: function (groupName, checked) {
+</span>        var me = this,
             parentRecord = this.getParentRecord(groupName);
         var metaGroup = this.getMetaGroup(groupName);
 
@@ -337,8 +337,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         //}
     },
 
-    getParentRecord: function (groupName) {
-        var parentRecord;
+<span id='SU-grid-feature-CheckboxGrouping-method-getParentRecord'>    getParentRecord: function (groupName) {
+</span>        var parentRecord;
         var metaGroup;
         // For Ext JS 6 and 5.1.1
         if (this.getMetaGroup) {
@@ -354,7 +354,7 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         return parentRecord;
     },
 
-<span id='global-method-refreshView'>    /**
+<span id='SU-grid-feature-CheckboxGrouping-method-refreshView'>    /**
 </span>     * TODO: This might break... we&#39;re using a private variable here... but this
      * is the only way we can refresh the view without breaking any sort of
      * scrolling... I&#39;m not sure how to only refresh the group header itself, so
@@ -369,11 +369,11 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         }
     },
 
-    changeViewSelection: function (selModel, records) {
-    },
+<span id='SU-grid-feature-CheckboxGrouping-method-changeViewSelection'>    changeViewSelection: function (selModel, records) {
+</span>    },
 
-    onViewSelect: function (selModel, record) {
-        var me = this;
+<span id='SU-grid-feature-CheckboxGrouping-method-onViewSelect'>    onViewSelect: function (selModel, record) {
+</span>        var me = this;
         var groupField = this.getGroupField();
         var selection = selModel.getSelection();
 
@@ -400,8 +400,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         this.chacheSelection = selection;
     },
 
-    onViewDeselect: function (selModel, record) {
-        var groupField = this.getGroupField();
+<span id='SU-grid-feature-CheckboxGrouping-method-onViewDeselect'>    onViewDeselect: function (selModel, record) {
+</span>        var groupField = this.getGroupField();
         var selection = selModel.getSelection();
 
         if (!groupField) return;
@@ -417,8 +417,8 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         this.chacheSelection = selection;
     },
 
-    onStoreUpdate: function (store, record, operation, modifiedFieldNames, details, eOpts) {
-        console.log(&#39;update&#39;);
+<span id='SU-grid-feature-CheckboxGrouping-method-onStoreUpdate'>    onStoreUpdate: function (store, record, operation, modifiedFieldNames, details, eOpts) {
+</span>        console.log(&#39;update&#39;);
         var grid = this.grid;
         if (!this.updatingRecords &amp;&amp; grid &amp;&amp; record) {
             var groupName = record.get(this.getGroupField());
@@ -428,15 +428,15 @@ Ext.define(&#39;SU.grid.feature.CheckboxGrouping&#39;, {
         }
     },
 
-    setRecordChecked: function (rec, checked) {
-        //this.grid.selModel[checked ? &#39;doSelect&#39; : &#39;doDeselect&#39;]([rec]);
+<span id='SU-grid-feature-CheckboxGrouping-method-setRecordChecked'>    setRecordChecked: function (rec, checked) {
+</span>        //this.grid.selModel[checked ? &#39;doSelect&#39; : &#39;doDeselect&#39;]([rec]);
         //rec.beginEdit();
         //rec.set(this.checkDataIndex, checked, { dirty: false });
         //rec.endEdit(true);
     },
 
-    onGroupClick: function (grid, node, group, event, eOpts) {
-        if (event &amp;&amp; grid) {
+<span id='SU-grid-feature-CheckboxGrouping-method-onGroupClick'>    onGroupClick: function (grid, node, group, event, eOpts) {
+</span>        if (event &amp;&amp; grid) {
             var me = this,
                 sm = me.grid.selModel,
                 target = event.getTarget(&#39;.&#39; + me.targetCls),
