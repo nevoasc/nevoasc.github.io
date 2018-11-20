@@ -17,6 +17,10 @@
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='SU-field-plugin-HighlightArea'>/**
 </span> * Плагин подсветки текста в Ext.field.TextArea
+ * 
+ * @history 20.11.2018 
+ * Временно убрана обработка в #handleInput
+ * При включении проверить работу в рекапах UK.ECP
  */
 Ext.define(&#39;SU.field.plugin.HighlightArea&#39;, {
     extend: &#39;Ext.plugin.Abstract&#39;,
@@ -106,12 +110,12 @@ Ext.define(&#39;SU.field.plugin.HighlightArea&#39;, {
     },
 
 <span id='SU-field-plugin-HighlightArea-method-handleInput'>    handleInput: function () {
-</span>        var me = this,
-            text = me.input.dom.value,
-            boundaries = me.getBoundaries();
-
-        text = boundaries ? Ext.callback(boundaries, me.getScope(), [me, me.getField(), text], 0, me) : text;
-        me.highlightEl.setHtml(text);
+</span>//        var me = this,
+//            text = me.input.dom.value,
+//            boundaries = me.getBoundaries();
+//
+//        text = boundaries ? Ext.callback(boundaries, me.getScope(), [me, me.getField(), text], 0, me) : text;
+//        me.highlightEl.setHtml(text);
     },
 
 <span id='SU-field-plugin-HighlightArea-method-handleScroll'>    handleScroll: function () {
