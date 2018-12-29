@@ -351,8 +351,9 @@ Ext.define(&#39;SU.field.Tag&#39;, {
                 el.querySelector(&quot;span&quot;)
                     .addEventListener(&quot;click&quot;,
                     Ext.bind(function () {
-                        this.getPicker().onItemDeselect([tag]);
-                        this.getPicker().setItemSelection([tag], false);
+                        this.getPicker().getSelectable().deselect([tag]);
+                        //this.getPicker().onItemDeselect([tag]);
+                        //this.getPicker().setItemSelection([tag], false);
                     },
                         me)
                     );
